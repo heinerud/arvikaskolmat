@@ -58,7 +58,7 @@ class App extends Component {
             return {
               date: x.DayMenuDate,
               info: x.DayMenuInfo,
-              dish: x.DayMenuName,
+              dish: x.DayMenuName.replace(/, /g, ',').replace(/,/g, ', '),
             }
           })
       }))
