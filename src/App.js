@@ -10,7 +10,7 @@ function dayOfWeek(dateNumber) {
   const days = ['Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag']
   let date = new Date(dateNumber)
   let dayIndex = date.getDay()
-  return days[Number(dayIndex) - 1]
+  return days[dayIndex - 1]
 }
 
 class Day extends Component {
@@ -21,7 +21,7 @@ class Day extends Component {
       fontWeight: 'normal'
     }
     const today = new Date()
-    let dayHasPassed = today > new Date(Number(this.props.date))
+    let dayHasPassed = today > new Date(this.props.date)
     let fontColor = dayHasPassed ? 'gray' : 'black'
 
     return (
@@ -66,7 +66,7 @@ class App extends Component {
   render() {
     let menu = this.state.menu ?
       this.state.menu.map(x => {
-        let dayName = dayOfWeek(Number(x.date))
+        let dayName = dayOfWeek(x.date)
         let day = x.info.length > 0 ? dayName + ' (' + x.info + ')' : dayName
         return { date: x.date, dish: x.dish, day: day }
       }) : []
