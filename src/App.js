@@ -41,7 +41,8 @@ class App extends Component {
       menu: null,
     }
   }
-  componentDidMount() {
+
+  fetchMenuData = () => {
     fetch(this.props.url)
       .then(res => res.json())
       .then(res => this.setState({
@@ -61,6 +62,11 @@ class App extends Component {
           })
       }))
       .then(x => console.log(this.state))
+  }
+
+  componentDidMount() {
+    this.fetchMenuData()
+    setInterval(this.fetchMenuData, 1000 * 60 * 20)
   }
 
   render() {
