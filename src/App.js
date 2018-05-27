@@ -9,10 +9,19 @@ function dayOfWeek(dateNumber) {
 
 class Day extends Component {
   render() {
+    let divStyle = {
+      marginLeft: '1%',
+      marginRight: '1%'
+    }
+    let menuStyle = {
+      marginLeft: '3%',
+      marginRight: '3%'
+    }
+
     return (
-      <div style={{ marginLeft: '1%' }}>
+      <div style={divStyle}>
         <h2>{this.props.day}</h2>
-        <h3 style={{ marginLeft: '3%' }}>{this.props.dish}</h3>
+        <h3 style={menuStyle}>{this.props.dish}</h3>
       </div >
     );
   }
@@ -55,15 +64,19 @@ class App extends Component {
         return { day: day, dish: x.dish }
       }) : []
     let title = this.state.title ? this.state.title + ' (v. ' + this.state.currentWeek + ')' : ''
+    let h1Style = {
+      marginLeft: '1%',
+      marginRight: '1%',
+    }
 
     return (
       <div className="App">
         {this.state.menu ?
           <div>
-            <h1 style={{ marginLeft: '1%' }}>{title}</h1>
+            <h1 style={h1Style}>{title}</h1>
             {menu.map((x, i) => <Day day={x.day} dish={x.dish} key={i} />)}
           </div>
-          : <div><h1>Fetching menu...</h1></div>
+          : <div><h1 style={h1Style}>Fetching menu...</h1></div>
         }
       </div>
     );
