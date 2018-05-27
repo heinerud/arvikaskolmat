@@ -15,7 +15,8 @@ class Day extends Component {
     }
     let menuStyle = {
       marginLeft: '3%',
-      marginRight: '3%'
+      marginRight: '3%',
+      fontWeight: 'normal'
     }
 
     return (
