@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-let api = 'https://arvikaskolmat-api.herokuapp.com';
-
 function dayOfWeek(dateStr) {
   const days = ['Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag']
   let date = new Date(dateStr)
@@ -46,7 +44,7 @@ class App extends Component {
     }
   }
   componentDidMount() {
-    fetch(api + '/school')
+    fetch(this.props.url)
       .then(response => response.json())
       .then(data => this.setState({
         title: data.title,
