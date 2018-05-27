@@ -21,7 +21,8 @@ class Day extends Component {
       fontWeight: 'normal'
     }
     const today = new Date()
-    let dayHasPassed = today > new Date(this.props.date)
+    let dayMillis = 3600 * 24 * 1000
+    let dayHasPassed = today > new Date(this.props.date + dayMillis)
     let fontColor = dayHasPassed ? 'gray' : 'black'
 
     return (
