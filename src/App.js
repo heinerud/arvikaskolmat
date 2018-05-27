@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 
+const margins = {
+  marginLeft: '3%',
+  marginRight: '3%'
+}
+const normalFont = { fontWeight: 'normal' }
+
 function dayOfWeek(dateNumber) {
   const days = ['Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag']
   let date = new Date(dateNumber)
@@ -9,21 +15,17 @@ function dayOfWeek(dateNumber) {
 
 class Day extends Component {
   render() {
-    let divStyle = {
-      marginLeft: '1%',
-      marginRight: '1%'
-    }
-    let menuStyle = {
+    let dishStyle = {
       marginLeft: '3%',
-      marginRight: '3%',
+      marginTop: '0%',
       fontWeight: 'normal'
     }
 
     return (
-      <div style={divStyle}>
-        <h2>{this.props.day}</h2>
-        <h3 style={menuStyle}>{this.props.dish}</h3>
-      </div >
+      <div style={margins}>
+        <h3 style={{ marginBottom: '1%' }}>{this.props.day}</h3>
+        <p style={dishStyle}>{this.props.dish}</p>
+      </div>
     );
   }
 }
@@ -65,19 +67,15 @@ class App extends Component {
         return { day: day, dish: x.dish }
       }) : []
     let title = this.state.title ? this.state.title + ' (v. ' + this.state.currentWeek + ')' : ''
-    let h1Style = {
-      marginLeft: '1%',
-      marginRight: '1%',
-    }
 
     return (
       <div className="App">
         {this.state.menu ?
-          <div>
-            <h1 style={h1Style}>{title}</h1>
+          <div style={margins}>
+            <h2 style={normalFont}>{title}</h2>
             {menu.map((x, i) => <Day day={x.day} dish={x.dish} key={i} />)}
           </div>
-          : <div><h1 style={h1Style}>Fetching menu...</h1></div>
+          : <div style={margins}><h2 style={normalFont}>Fetching menu...</h2></div>
         }
       </div>
     );
