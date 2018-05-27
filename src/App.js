@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 const margins = {
-  marginLeft: '3%',
-  marginRight: '3%'
+  marginLeft: '15px',
+  marginRight: '15px'
 }
 const normalFont = { fontWeight: 'normal' }
 
@@ -16,14 +16,14 @@ function dayOfWeek(dateNumber) {
 class Day extends Component {
   render() {
     let dishStyle = {
-      marginLeft: '3%',
-      marginTop: '0%',
+      marginLeft: '15px',
+      marginTop: '0px',
       fontWeight: 'normal'
     }
 
     return (
       <div style={margins}>
-        <h3 style={{ marginBottom: '1%' }}>{this.props.day}</h3>
+        <h3 style={{ marginBottom: '5px' }}>{this.props.day}</h3>
         <p style={dishStyle}>{this.props.dish}</p>
       </div>
     );
