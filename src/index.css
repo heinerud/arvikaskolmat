@@ -4,4 +4,11 @@ body {
   font-family: 'Anonymous Pro';
   font-size:250%;
   background:#ffffff;
+  border-style: solid;
+  border-top-width: 150px;
+  border-right-width: 0px;
+  border-bottom-width: 50px;
+  border-left-width: 0px;
+  border-top-color: #0053f5;
+  border-bottom-color: #e6b333;
 }
