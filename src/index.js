@@ -6,7 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 import { Route } from 'react-router'
 import { BrowserRouter } from 'react-router-dom'
 
-let api = 'https://arvikaskolmat-api.herokuapp.com';
+let api = 'https://skolmat-api.herokuapp.com';
 
 ReactDOM.render(<BrowserRouter>
     <div>
