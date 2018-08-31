@@ -18,6 +18,7 @@ class Day extends Component {
     let dishStyle = {
       marginLeft: '15px',
       marginTop: '0px',
+      marginBottom: '0px',
       fontWeight: 'normal'
     }
     const today = new Date()
@@ -28,7 +29,7 @@ class Day extends Component {
     return (
       <div style={{ margins, color: fontColor }} >
         <h3 style={{ fontWeight: 'normal', marginBottom: '5px' }}>{this.props.day}</h3>
-        <p style={dishStyle}>{this.props.dish}</p>
+        {this.props.dishes.map(x => <p style={dishStyle}>{' ☞ ' + x}</p>)}
       </div>
     );
   }
@@ -52,13 +53,13 @@ class App extends Component {
           .filter(x => x.WeekNumber === res.CurrentWeek)[0].MenuName,
         menu: res.Weeks
           .filter(x => x.WeekNumber === res.CurrentWeek)[0].Days
-          .map(x => x.DayMenus[0])
-          .map(x => x.MenuPresentation)
+          .map(x => x.DayMenus)
+          .map(x => x.map(x => x.MenuPresentation))
           .map(x => {
             return {
-              date: x.DayMenuDate,
-              info: x.DayMenuInfo,
-              dish: x.DayMenuName.replace(/, /g, ',').replace(/,/g, ', '),
+              date: x[0].DayMenuDate,
+              info: x[0].DayMenuInfo,
+              dishes: x.map(x => x.DayMenuName.replace(/, /g, ',').replace(/,/g, ', ')),
             }
           })
       }))
@@ -75,7 +76,7 @@ class App extends Component {
       this.state.menu.map(x => {
         let dayName = dayOfWeek(x.date)
         let day = x.info.length > 0 ? dayName + ' (' + x.info + ')' : dayName
-        return { date: x.date, dish: x.dish, day: day }
+        return { date: x.date, dishes: x.dishes, day: day }
       }) : []
     let title = this.state.title ? this.state.title + ' (v. ' + this.state.currentWeek + ')' : ''
 
@@ -84,7 +85,7 @@ class App extends Component {
         {this.state.menu ?
           <div style={margins}>
             <h2 style={normalFont}>{title}</h2>
-            {menu.map((x, i) => <Day day={x.day} date={x.date} dish={x.dish} key={i} />)}
+            {menu.map((x, i) => <Day day={x.day} date={x.date} dishes={x.dishes} key={i} />)}
           </div>
           : <div style={margins}><h2 style={normalFont}>Fetching menu...</h2></div>
         }
