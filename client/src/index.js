@@ -9,6 +9,7 @@ import { BrowserRouter } from 'react-router-dom';
 ReactDOM.render(
   <BrowserRouter>
     <div>
+      <Route exact path="/" render={() => <App url={'api/school'} />} />
       <Route path="/school" render={() => <App url={'api/school'} />} />
       <Route path="/preschool" render={() => <App url={'api/preschool'} />} />
     </div>
