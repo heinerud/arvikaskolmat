@@ -31,8 +31,10 @@ class Day extends Component {
         <h3 style={{ fontWeight: 'normal', marginBottom: '5px' }}>
           {this.props.day}
         </h3>
-        {this.props.dishes.map(x => (
-          <p style={dishStyle}>{' ☞ ' + x}</p>
+        {this.props.dishes.map((x, i) => (
+          <p style={dishStyle} key={i}>
+            {' ☞ ' + x}
+          </p>
         ))}
       </div>
     );
