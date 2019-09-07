@@ -98,7 +98,12 @@ class App extends Component {
           <div style={margins}>
             <h2 style={normalFont}>{title}</h2>
             {menu.map((x, i) => (
-              <Day day={x.day} date={x.date} dishes={x.dishes} key={i} />
+              <Day
+                day={x.day}
+                date={x.date}
+                dishes={[...new Set(x.dishes)]}
+                key={i}
+              />
             ))}
           </div>
         ) : (
